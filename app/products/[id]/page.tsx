@@ -12,7 +12,6 @@ export default async function ProductDetailPage({
   return (
     <main className="p-6 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
-
       <div className="flex flex-col md:flex-row gap-6 items-center">
       <Image
         src={product.image}
