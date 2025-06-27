@@ -9,11 +9,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
+interface ProductDetailPageProps {
   params: { id: string };
-}) {
+}
+
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const product = await getProductById(params.id);
 
   return (
