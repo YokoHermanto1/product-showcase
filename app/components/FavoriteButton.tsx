@@ -30,6 +30,8 @@ export default function FavoriteButton({ productId }: Props) {
     setIsFav(!isFav);
   };
 
+  if (isFav === null) return null;
+  
   return (
     <button
       onClick={toggleFavorite}
