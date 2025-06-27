@@ -3,17 +3,17 @@ import FavoriteButton from '../../components/FavoriteButton';
 import Image from 'next/image';
 
 export async function generateStaticParams() {
-  const products = await getProducts(); // panggil tanpa parameter
+  const products = await getProducts();
   return products.slice(0, 5).map((product: { id: number }) => ({
     id: product.id.toString(),
   }));
 }
 
-interface ProductDetailPageProps {
+export default async function ProductDetailPage({
+  params,
+}: {
   params: { id: string };
-}
-
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+}) {
   const product = await getProductById(params.id);
 
   return (
