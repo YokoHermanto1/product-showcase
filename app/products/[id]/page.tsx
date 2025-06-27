@@ -1,6 +1,13 @@
-import { getProductById } from '@/lib/api';
+import { getProducts,getProductById } from '@/lib/api';
 import FavoriteButton from '../../components/FavoriteButton';
 import Image from 'next/image';
+
+export async function generateStaticParams() {
+  const products = await getProducts(); // panggil tanpa parameter
+  return products.slice(0, 5).map((product: { id: number }) => ({
+    id: product.id.toString(),
+  }));
+}
 
 export default async function ProductDetailPage({
   params,
