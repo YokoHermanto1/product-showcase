@@ -1,5 +1,6 @@
 import { getProductById } from '@/lib/api';
 import FavoriteButton from '../../components/FavoriteButton';
+import Image from 'next/image';
 
 export default async function ProductDetailPage({
   params,
@@ -13,11 +14,14 @@ export default async function ProductDetailPage({
       <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
 
       <div className="flex flex-col md:flex-row gap-6 items-center">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-64 h-64 object-contain border rounded"
-        />
+      <Image
+        src={product.image}
+        alt={product.title}
+        width={256} // 64 * 4 (tailwind w-64 = 256px)
+        height={256}
+        className="object-contain border rounded"
+        style={{ width: '16rem', height: '16rem' }} // optional, agar tetap 64x64 tailwind
+      />
         <div>
           <p className="mb-4 text-gray-700">{product.description}</p>
           <p className="text-lg font-semibold">Category: {product.category}</p>

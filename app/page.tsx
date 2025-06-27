@@ -1,5 +1,6 @@
 import { getProducts } from '@/lib/api';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Tipe sesuai struktur dari fakestoreapi
 type Product = {
@@ -18,11 +19,13 @@ export default async function HomePage() {
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <div key={product.id} className="border rounded shadow-md p-4 flex flex-col items-center">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="h-40 w-auto object-contain mb-4"
-            />
+          <Image
+                src={product.image}
+                alt={product.title}
+                width={160} // h-40 = 160px
+                height={160}
+                className="h-40 w-auto object-contain mb-4"
+              />
             <h2 className="text-center font-semibold mb-2">{product.title}</h2>
             <Link
               href={`/products/${product.id}`}
